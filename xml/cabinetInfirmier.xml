@@ -55,7 +55,7 @@
                 <codePostal>38700</codePostal>
                 <ville>La Tronche</ville>
             </adresse>
-            <visite date="2015-12-08" intervenant = "">
+            <visite date="2015-12-08" intervenant = "001">
                 <acte id="300"/>
             </visite>
         </patient>
