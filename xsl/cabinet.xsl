@@ -5,7 +5,7 @@
                 xmlns:act="../xml/actes.xml">
     <xsl:output method="html"/>
     <xsl:param name="destinedId" select="003"/>
-    <xsl:variable name="actes" select="document('actes.xml', /)/act:ngap"/>
+    <xsl:variable name="actes" select="document('actes.xml', ../xml)/act:ngap"/>
     <xsl:template match="/">
         <html>
             <style>
@@ -21,7 +21,7 @@
             <body>
                 <h2>Bonjour <xsl:value-of select="cab:cabinet/cab:infirmiers/cab:infirmier[@id=$destinedId]/cab:nom"/></h2>
                 <h3>Aujourd'hui ,vous avez <xsl:value-of select="count(cab:cabinet/cab:patients/cab:patient/cab:visite[@intervenant=$destinedId])"/> patients</h3>
-                <xsl:apply-templates/>
+                <xsl:apply-templates select="cab:cabinet/cab:patients"/>
             </body>
         </html>
     </xsl:template>
@@ -36,24 +36,23 @@
             <xsl:for-each select="cab:patient">
             <tr>
                 <td><xsl:value-of select="cab:nom/text()"/>  <xsl:value-of select="cab:prenom/text()"/></td>
-                <td><xsl:apply-templates select="cab:patient/cab:adresse"/> </td>
-                <td><xsl:apply-templates select="cab:patients"/></td>
+                <td><xsl:apply-templates select="cab:adresse"/> </td>
+                <td><xsl:apply-templates select="cab:visite"/></td>
             </tr>
             </xsl:for-each>
         </table>
     </xsl:template>
-    <xsl:template match="cab:patient/cab:adresse">
+    <xsl:template match="cab:adresse">
         <p><xsl:value-of select="cab:numero"/> <xsl:value-of select="cab:rue"/>
-            <p><xsl:value-of select="cab:codePostal"/> <xsl:value-of
-                select="cab:ville"/>   <xsl:value-of select="cab:etage"/>
+            <p><xsl:value-of select="cab:codePostal"/> <xsl:value-of select="cab:ville"/>   <xsl:value-of select="cab:etage"/>
             </p>
         </p>
     </xsl:template>
-    <xsl:template match="cab:patients">
-        <xsl:for-each select="//cab:acte">
-            <xsl:variable name="actePatient" select="cab:patient/cab:visite/cab:acte/@id"/>
+    <xsl:template match="cab:visite">
+        <xsl:for-each select="cab:acte">
+            <xsl:variable name="actePatient" select="./@id"/>
             <xsl:for-each select="$actes/act:actes/act:acte">
-                <xsl:value-of select="cab:acte[@id=$actePatient]"/>
+                <xsl:value-of select="cab:acte[@id=$actePatient]/text()"/>
             </xsl:for-each>
         </xsl:for-each>
     </xsl:template>
