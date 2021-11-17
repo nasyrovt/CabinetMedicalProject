@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cabinet xmlns="http://test/cabinet"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://test/cabinet ../xsd/XMLShema.xsd">
+    <nom>Soins à Grenoble</nom>
+    <adresse>
+        <numero>60</numero>
+        <rue>rue de la Chimie</rue>
+        <codePostal>38041</codePostal>
+        <ville>Grenoble</ville>
+    </adresse>
+    <infirmiers>
+        <infirmier id ="001">
+            <nom>Frechie</nom>
+            <prenom>Sarah</prenom>
+            <photo>PHOTO</photo>
+        </infirmier>
+        <infirmier id ="002">
+            <nom>Sticke</nom>
+            <prenom>Sophie</prenom>
+            <photo>PHOTO</photo>
+        </infirmier>
+        <infirmier id ="003">
+            <nom>Ochon</nom>
+            <prenom>Paul</prenom>
+            <photo>PHOTO</photo>
+        </infirmier>
+    </infirmiers>
+    <patients>
+        <patient>
+            <nom>Alecole</nom>
+            <prenom>Yvon</prenom>
+            <sexe>M</sexe>
+            <naissance>1998-08-22</naissance>
+            <numero>198082205545852</numero>
+            <adresse>
+                <numero>50</numero>
+                <rue>avenue Felix Viallet</rue>
+                <codePostal>38031</codePostal>
+                <ville>Grenoble</ville>
+                <etage>6</etage>
+            </adresse>
+            <visite date="2015-12-08" intervenant ="001">
+                <acte id="109"/>
+            </visite>
+        </patient>
+        <patient>
+            <nom>Orouge</nom>
+            <prenom>Elvire</prenom>
+            <sexe>F</sexe>
+            <naissance>1987-03-08</naissance>
+            <numero>2870369123052</numero>
+            <adresse>
+                <rue>Rond-Point de la Croix de Vie</rue>
+                <codePostal>38700</codePostal>
+                <ville>La Tronche</ville>
+            </adresse>
+            <visite date="2015-12-08" intervenant = "">
+                <acte id="300"/>
+            </visite>
+        </patient>
+        <patient>
+            <nom>Pien</nom>
+            <prenom>Oscare</prenom>
+            <sexe>M</sexe>
+            <naissance>1975-03-25</naissance>
+            <numero>65</numero>
+            <adresse>
+                <rue>rue Casimir Brenier</rue>
+                <codePostal>38000</codePostal>
+                <ville>Grenoble</ville>
+            </adresse>
+            <visite date="2015-12-08" intervenant = "">
+                <acte id="101"/>
+                <acte id="104"/>
+            </visite>
+        </patient>
+        <patient>
+            <nom>Kapoetla</nom>
+            <prenom>Xavier</prenom>
+            <sexe>M</sexe>
+            <naissance>2011-08-02</naissance>
+            <numero>63</numero>
+            <adresse>
+                <numero>25</numero>
+                <rue>rue de Martyrs</rue>
+                <codePostal>38042</codePostal>
+                <ville>Grenoble</ville>
+            </adresse>
+            <visite date="2015-12-08" intervenant = "">
+                <acte id="111"/>
+            </visite>
+        </patient>
+    </patients>
+</cabinet>

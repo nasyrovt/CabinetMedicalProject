@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://test/cabinet"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema"
+            xmlns:cab="http://test/cabinet"
+            elementFormDefault="qualified">
+<!--  -->
+<xs:element name="cabinet" type="cab:Cabinet"/>
+<xs:complexType name="Cabinet">
+    <xs:sequence>
+        <xs:element name="nom" type="xs:string" />
+        <xs:element type="cab:Adresse" name="adresse"/>
+        <xs:element type="cab:Infirmiers" name="infirmiers"/>
+        <xs:element type="cab:Patients" name="patients"/>
+    </xs:sequence>
+</xs:complexType>
+<xs:complexType name="Adresse">
+    <xs:sequence>
+        <xs:element name="numero" type="xs:byte" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="rue" type="xs:string"/>
+        <xs:element name="codePostal" type="xs:int" />
+        <xs:element name="ville" type="xs:string" />
+        <xs:choice>
+            <xs:element name="etage" type="xs:byte"  minOccurs="0" maxOccurs="1"/>
+        </xs:choice>
+    </xs:sequence>
+</xs:complexType>
+<xs:complexType name="Infirmiers">
+    <xs:sequence>
+        <xs:element name="infirmier" type="cab:Infirmier" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+</xs:complexType>
+<xs:complexType name="Infirmier">
+    <xs:sequence>
+        <xs:element type="xs:string" name="nom"/>
+        <xs:element type="xs:string" name="prenom"/>
+        <xs:element type="xs:string" name="photo"/>
+    </xs:sequence>
+    <xs:attribute type="xs:byte" name="id" use="required"/>
+</xs:complexType>
+<xs:complexType name="Patients">
+    <xs:sequence>
+        <xs:element name = "patient" type="cab:Patient" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+</xs:complexType>
+<xs:complexType name="Patient">
+    <xs:sequence>
+        <xs:element type="xs:string" name="nom"/>
+        <xs:element type="xs:string" name="prenom"/>
+        <xs:element type="xs:string" name="sexe"/>
+        <xs:element type="xs:date" name="naissance"/>
+        <xs:element type="xs:long" name="numero"/>
+        <xs:element type="cab:Adresse" name = "adresse"/>
+        <xs:element type="cab:Visite" name = "visite"/>
+    </xs:sequence>
+</xs:complexType>
+<xs:complexType name="Visite">
+    <xs:sequence>
+        <xs:element name="acte" type="cab:Acte" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:date" name="date" use="required"/>
+    <xs:attribute type="cab:Restriction" name="intervenant" use="optional"/>
+</xs:complexType>
+<xs:complexType name="Acte">
+    <xs:simpleContent>
+        <xs:extension base="xs:string">
+            <xs:attribute type="cab:Restriction" name="id" use="required"/>
+        </xs:extension>
+    </xs:simpleContent>
+</xs:complexType>
+<xs:simpleType name="Restriction">
+    <xs:restriction base="xs:string">
+        <xs:pattern value="[0-9]*"/>
+    </xs:restriction>
+</xs:simpleType>
+</xs:schema>
