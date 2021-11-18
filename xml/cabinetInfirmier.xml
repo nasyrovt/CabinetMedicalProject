@@ -70,7 +70,7 @@
                 <codePostal>38000</codePostal>
                 <ville>Grenoble</ville>
             </adresse>
-            <visite date="2015-12-08" intervenant = "">
+            <visite date="2015-12-08" intervenant = "001">
                 <acte id="101"/>
                 <acte id="104"/>
             </visite>

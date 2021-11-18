@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ngap>
+<ngap xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+        xmlns='http://www.ujf-grenoble.fr/l3miage/actes'
+        xsi:schemaLocation='http://www.ujf-grenoble.fr/l3miage/actes ../xsd/actes.xsd'>
     <types>
         <type id="pi">prélèvements et injections</type>
         <type id="pc">pansements courants</type>
@@ -14,10 +16,10 @@
     </types>
     <actes>
         <acte id="101" type="pi" clé="AMI" coef="1.5"> 
-            Prélèvement par ponction veineuse directe
+            Prélèvement par ponction veineuse directe.
         </acte>
         <acte id="102" type="pi" clé="AMI" coef="5">
-            Saignée      
+            Saignée.
         </acte>
         <acte id="103" type="pi" clé="AMI" coef="1">
             Prélèvement aseptique cutané ou de sécrétions muqueuses, prélèvement

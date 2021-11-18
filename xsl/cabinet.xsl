@@ -2,10 +2,10 @@
 <xsl:stylesheet version="1.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:cab="http://test/cabinet"
-                xmlns:act="../xml/actes.xml">
+                xmlns:act="http://www.ujf-grenoble.fr/l3miage/actes">
     <xsl:output method="html"/>
-    <xsl:param name="destinedId" select="003"/>
-    <xsl:variable name="actes" select="document('actes.xml', ../xml)/act:ngap"/>
+    <xsl:param name="destinedId" select="001"/>
+    <xsl:variable name="actes" select="document('../xml/actes.xml')/act:ngap/act:actes"/>
     <xsl:template match="/">
         <html>
             <style>
@@ -33,7 +33,7 @@
                 <td>Adresse</td>
                 <td>Liste des soins</td>
             </tr>
-            <xsl:for-each select="cab:patient">
+            <xsl:for-each select="cab:patient[cab:visite/@intervenant=$destinedId]">
             <tr>
                 <td><xsl:value-of select="cab:nom/text()"/>  <xsl:value-of select="cab:prenom/text()"/></td>
                 <td><xsl:apply-templates select="cab:adresse"/> </td>
@@ -48,13 +48,15 @@
             </p>
         </p>
     </xsl:template>
+    <!--- ENG: Template for getting acte's names
+          FR:Template permettant de trouver et afficher les noms des actes -->
     <xsl:template match="cab:visite">
         <xsl:for-each select="cab:acte">
-            <xsl:variable name="actePatient" select="./@id"/>
-            <xsl:for-each select="$actes/act:actes/act:acte">
-                <xsl:value-of select="cab:acte[@id=$actePatient]/text()"/>
-            </xsl:for-each>
+            <xsl:variable name="acteID" select="@id"/>
+            <p><xsl:value-of select="$actes/act:acte[@id=$acteID]/text()"/></p>
         </xsl:for-each>
     </xsl:template>
+    <!--- ENG: Template for avoiding untreated text
+          FR:Template permettant d'eviter l'affichage du text non-traite par notre programme -->
     <xsl:template match="text()"/>
 </xsl:stylesheet>
