@@ -8,20 +8,18 @@
     <xsl:variable name="actes" select="document('../xml/actes.xml')/act:ngap/act:actes"/>
     <xsl:template match="/">
         <html>
-            <style>
-                table, th, td {
-                padding: 10px;
-                border: 1px solid black;
-                border-collapse: collapse;
-                }
-            </style>
             <head>
                 <title>Cabinet Medical</title>
+                <link rel="stylesheet" href="../stylesheets/infirmierPage.css"/>
             </head>
             <body>
                 <h2>Bonjour <xsl:value-of select="cab:cabinet/cab:infirmiers/cab:infirmier[@id=$destinedId]/cab:nom"/></h2>
                 <h3>Aujourd'hui ,vous avez <xsl:value-of select="count(cab:cabinet/cab:patients/cab:patient/cab:visite[@intervenant=$destinedId])"/> patients</h3>
                 <xsl:apply-templates select="cab:cabinet/cab:patients"/>
+                <xsl:element name="script">
+                    <xsl:attribute name="type">text/javascript</xsl:attribute>
+                    <xsl:attribute name="src">../scripts/buttonScript.js</xsl:attribute>
+                </xsl:element>
             </body>
         </html>
     </xsl:template>
@@ -32,18 +30,31 @@
                 <td>Patient</td>
                 <td>Adresse</td>
                 <td>Liste des soins</td>
+                <td>Facture</td>
             </tr>
             <xsl:for-each select="cab:patient[cab:visite/@intervenant=$destinedId]">
-            <tr>
-                <td><xsl:value-of select="cab:nom/text()"/>  <xsl:value-of select="cab:prenom/text()"/></td>
-                <td><xsl:apply-templates select="cab:adresse"/> </td>
-                <td><xsl:apply-templates select="cab:visite"/></td>
-            </tr>
+                <tr>
+                    <td><xsl:value-of select="cab:nom/text()"/>  <xsl:value-of select="cab:prenom/text()"/></td>
+                    <td><xsl:apply-templates select="cab:adresse"/> </td>
+                    <td><xsl:apply-templates select="cab:visite"/></td>
+                    <td>
+                        <xsl:element name="button">
+                            <xsl:attribute name="class">button button_style</xsl:attribute>
+                            <xsl:attribute name="onclick">
+                                openFacture('<xsl:value-of select="cab:prenom/text()"/>',
+                                '<xsl:value-of select="cab:nom/text()"/>',
+                                '<xsl:value-of select="cab:visite/*[@id]"/>')
+                            </xsl:attribute>
+                            Facture
+                        </xsl:element>
+                    </td>
+                </tr>
             </xsl:for-each>
         </table>
     </xsl:template>
     <xsl:template match="cab:adresse">
-        <p><xsl:value-of select="cab:numero"/> <xsl:value-of select="cab:rue"/>
+        <p>
+            <xsl:value-of select="cab:numero"/> <xsl:value-of select="cab:rue"/>
             <p><xsl:value-of select="cab:codePostal"/> <xsl:value-of select="cab:ville"/>   <xsl:value-of select="cab:etage"/>
             </p>
         </p>

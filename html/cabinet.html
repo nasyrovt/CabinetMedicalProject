@@ -1,21 +1,15 @@
 <html xmlns:act="http://www.ujf-grenoble.fr/l3miage/actes" xmlns:cab="http://test/cabinet">
-    <style>
-                table, th, td {
-                padding: 10px;
-                border: 1px solid black;
-                border-collapse: collapse;
-                }
-            </style>
     <head>
         <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Cabinet Medical</title>
+        <link rel="stylesheet" href="../stylesheets/infirmierPage.css">
     </head>
     <body>
         <h2>Bonjour Frechie</h2>
         <h3>Aujourd'hui ,vous avez 3 patients</h3>
         <table>
             <tr>
-                <td>Patient</td><td>Adresse</td><td>Liste des soins</td>
+                <td>Patient</td><td>Adresse</td><td>Liste des soins</td><td>Facture</td>
             </tr>
             <tr>
                 <td>AlecoleYvon</td><td>
@@ -27,7 +21,13 @@
                     <p>
             Injection sous-cutan&eacute;e.
         </p>
-                </td>
+                </td><td><button class="button button_style" onclick="
+                                openFacture('Yvon',
+                                'Alecole',
+                                '')
+                            ">
+                            Facture
+                        </button></td>
             </tr>
             <tr>
                 <td>OrougeElvire</td><td>
@@ -40,7 +40,13 @@
             Pansement de br&ucirc;lure &eacute;tendue ou de plaie chimique ou thermique &eacute;tendue,
             sur une surface sup&eacute;rieure &agrave; 5% de la surface corporelle.
         </p>
-                </td>
+                </td><td><button class="button button_style" onclick="
+                                openFacture('Elvire',
+                                'Orouge',
+                                '')
+                            ">
+                            Facture
+                        </button></td>
             </tr>
             <tr>
                 <td>PienOscare</td><td>
@@ -55,8 +61,15 @@
                     <p>
             Inection intraveineuse directe isol&eacute;e.
         </p>
-                </td>
+                </td><td><button class="button button_style" onclick="
+                                openFacture('Oscare',
+                                'Pien',
+                                '')
+                            ">
+                            Facture
+                        </button></td>
             </tr>
         </table>
+        <script type="text/javascript" src="../scripts/buttonScript.js"></script>
     </body>
 </html>
