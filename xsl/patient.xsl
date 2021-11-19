@@ -1,8 +1,11 @@
 <?xml version="1.0"?>
 <xsl:stylesheet version="1.0"
             xmlns:cab="http://test/cabinet"
+            xmlns:pat="http://www.ujf-grenoble.fr/l3miage/patient"
             xmlns:act="http://www.ujf-grenoble.fr/l3miage/actes"
-            xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+            xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://www.ujf-grenoble.fr/l3miage/patient ../xsd/patient.xsd">
     <xsl:output method="xml"/>
     <xsl:param name="destinedName" >Oscare</xsl:param>
     <xsl:variable name="actes" select="document('../xml/actes.xml')/act:ngap/act:actes"/>
