@@ -55,7 +55,7 @@
     <xsl:template match="cab:adresse">
         <p>
             <xsl:value-of select="cab:numero"/> <xsl:value-of select="cab:rue"/>
-            <p><xsl:value-of select="cab:codePostal"/> <xsl:value-of select="cab:ville"/>   <xsl:value-of select="cab:etage"/>
+            <p><xsl:value-of select="cab:codePostal"/> <xsl:value-of select="cab:ville"/> <xsl:value-of select="cab:etage"/>
             </p>
         </p>
     </xsl:template>
