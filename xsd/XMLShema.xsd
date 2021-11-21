@@ -50,7 +50,7 @@
         <xs:element type="xs:date" name="naissance"/>
         <xs:element type="xs:long" name="numero"/>
         <xs:element type="cab:Adresse" name = "adresse"/>
-        <xs:element type="cab:Visite" name = "visite"/>
+        <xs:element type="cab:Visite" name = "visite" maxOccurs="unbounded"/>
     </xs:sequence>
 </xs:complexType>
 <xs:complexType name="Visite">

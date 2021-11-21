@@ -74,6 +74,10 @@
                 <acte id="101"/>
                 <acte id="104"/>
             </visite>
+            <visite date="2015-12-11" intervenant = "002">
+                <acte id="101"/>
+                <acte id="104"/>
+            </visite>
         </patient>
         <patient>
             <nom>Kapoetla</nom>

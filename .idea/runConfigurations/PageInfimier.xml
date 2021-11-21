@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Cabinet" type="XSLT" factoryName="XSLT">
+  <configuration default="false" name="PageInfimier" type="XSLT" factoryName="XSLT">
     <option name="myOutputFile" value="$PROJECT_DIR$/html/cabinet.html" />
     <option name="myOpenOutputFile" value="true" />
     <option name="myOpenInBrowser" value="false" />
