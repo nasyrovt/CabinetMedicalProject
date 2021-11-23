@@ -56,15 +56,15 @@
                     <xsl:value-of select="/cab:cabinet/cab:infirmiers/cab:infirmier[@id=$InterID]/cab:prenom"/>
                 </prenom>
             </intervenant>
-            <acte>
-                <xsl:apply-templates select="cab:acte"/>
-            </acte>
+            <xsl:apply-templates select="cab:acte"/>
         </visite>
     </xsl:template>
 
     <xsl:template match="cab:acte">
-        <xsl:variable name="acte" select="@id"/>
-        <xsl:value-of select="$actes/act:acte[@id=$acte]/text()"/>
+        <acte>
+            <xsl:variable name="acte" select="@id"/>
+            <xsl:value-of select="$actes/act:acte[@id=$acte]/text()"/>
+        </acte>
     </xsl:template>
 
     <xsl:template match="text()"/>

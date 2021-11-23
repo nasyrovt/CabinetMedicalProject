@@ -31,7 +31,7 @@
     <xs:complexType name="Visite">
         <xs:sequence>
             <xs:element name="intervenant" type="pat:Intervenant"/>
-            <xs:element name="acte" type="xs:string"/>
+            <xs:element name="acte" type="xs:string" maxOccurs="unbounded"/>
         </xs:sequence>
         <xs:attribute type="xs:date" name="date" use="required"/>
     </xs:complexType>

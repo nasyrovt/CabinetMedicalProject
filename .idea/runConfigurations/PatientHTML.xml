@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="PatientHTML" type="XSLT" factoryName="XSLT">
-    <option name="myOutputFile" value="$PROJECT_DIR$/html/fiche_patient.html" />
+    <option name="myOutputFile" value="$PROJECT_DIR$/html/pagePatient.html" />
     <option name="myOpenOutputFile" value="true" />
     <option name="myOpenInBrowser" value="false" />
     <option name="mySmartErrorHandling" value="true" />
@@ -10,7 +10,7 @@
     <option name="myModule" />
     <option name="myJdk" />
     <XsltFile url="file://$PROJECT_DIR$/xsl/patientHtml.xsl" />
-    <XmlFile url="file://$PROJECT_DIR$/xml/original.xml" />
+    <XmlFile url="file://$PROJECT_DIR$/xml/patient.xml" />
     <parameters />
     <OutputType value="CONSOLE" save-to-file="true" />
     <FileType name="HTML" />
