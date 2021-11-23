@@ -47,7 +47,7 @@
     </xsl:template>
     <xsl:template match="cab:visite">
         <xsl:variable name="InterID" select="@intervenant"/>
-        <visite date="{./@date}">
+        <visite date="{@date}">
             <intervenant>
                 <nom>
                     <xsl:value-of select="/cab:cabinet/cab:infirmiers/cab:infirmier[@id=$InterID]/cab:nom"/>

@@ -28,15 +28,14 @@
         <tr>
             <td><xsl:value-of select="@date"/></td>
             <td><xsl:value-of select="pat:intervenant/pat:nom/text()"/>  <xsl:value-of select="pat:intervenant/pat:prenom/text()"/></td>
-            <td><xsl:apply-templates select="pat:visite"/></td>
             <td>
-                <xsl:apply-templates select="pat:patient/pat:visite/pat:acte"/>
+                <xsl:apply-templates select="pat:patient/pat:visite"/>
             </td>
         </tr>
     </xsl:template>
 
-    <xsl:template match="pat:acte">
-        <p><xsl:value-of select="pat:acte/text()"/></p>
+    <xsl:template match="pat:visite/pat:acte">
+        <p><xsl:value-of select="text()"/></p>
     </xsl:template>
     <!--- ENG: Template for avoiding untreated text
           FR:Template permettant d'eviter l'affichage du text non-traite par notre programme -->
