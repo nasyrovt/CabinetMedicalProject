@@ -13,7 +13,7 @@
     <XmlFile url="file://$PROJECT_DIR$/xml/original.xml" />
     <parameters />
     <OutputType value="CONSOLE" save-to-file="true" />
-    <FileType name="XML" />
+    <FileType name="HTML" />
     <JdkChoice value="FROM_MODULE" />
     <method v="2">
       <option name="Make" enabled="true" />

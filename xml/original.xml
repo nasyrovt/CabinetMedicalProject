@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<patient xmlns:act="http://www.ujf-grenoble.fr/l3miage/actes" xmlns:pat="http://www.ujf-grenoble.fr/l3miage/patient"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cab="http://test/cabinet">
+<patient xmlns:act="http://www.ujf-grenoble.fr/l3miage/actes" xmlns:cab="http://test/cabinet"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.ujf-grenoble.fr/l3miage/patient"
+         xsi:schemaLocation="http://www.ujf-grenoble.fr/l3miage/patient ../xsd/patient.xsd">
     <nom>Pien</nom>
     <prenom>Oscare</prenom>
     <sexe>M</sexe>
