@@ -11,7 +11,7 @@
             </head>
             <body>
                 <h2>Bonjour <xsl:value-of select="pat:patient/pat:prenom"/></h2>
-                <h3>Aujourd'hui ,voici la liste de vos soins a effectuer</h3>
+                <h3>Voici la liste de vos soins a effectuer</h3>
                 <table>
                     <thead>
                         <tr>

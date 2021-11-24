@@ -9,7 +9,7 @@
     <xsl:template match="/">
         <html>
             <head>
-                <title>Cabinet Medical</title>
+                <title>Cabinet Medical - Page Infimier</title>
                 <link rel="stylesheet" href="../stylesheets/infirmierPage.css"/>
             </head>
             <body>
@@ -39,7 +39,7 @@
             <tr>
                 <td><xsl:value-of select="cab:nom/text()"/>  <xsl:value-of select="cab:prenom/text()"/></td>
                 <td><xsl:apply-templates select="cab:adresse"/> </td>
-                <td><xsl:apply-templates select="cab:visite"/></td>
+                <td><xsl:apply-templates select="cab:visite/cab:acte"/></td>
                 <td>
                     <xsl:element name="button">
                         <xsl:attribute name="class">button button_style</xsl:attribute>
@@ -70,11 +70,9 @@
     </xsl:template>
     <!--- ENG: Template for getting acte's names
           FR:Template permettant de trouver et afficher les noms des actes -->
-    <xsl:template match="cab:visite">
-        <xsl:for-each select="cab:acte">
-            <xsl:variable name="acteID" select="@id"/>
-            <p><xsl:value-of select="$actes/act:acte[@id=$acteID]/text()"/></p>
-        </xsl:for-each>
+    <xsl:template match="cab:acte">
+        <xsl:variable name="acteID" select="@id"/>
+        <p><xsl:value-of select="$actes/act:acte[@id=$acteID]/text()"/></p>
     </xsl:template>
     <!--- ENG: Template for avoiding untreated text
           FR:Template permettant d'eviter l'affichage du text non-traite par notre programme -->
