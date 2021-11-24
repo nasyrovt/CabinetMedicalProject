@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="PageInfimier" type="XSLT" factoryName="XSLT">
-    <option name="myOutputFile" value="$PROJECT_DIR$/html/pageInfirmier.html" />
+  <configuration default="false" name="Patient" type="XSLT" factoryName="XSLT">
+    <option name="myOutputFile" value="$PROJECT_DIR$/xml/patient.xml" />
     <option name="myOpenOutputFile" value="true" />
     <option name="myOpenInBrowser" value="false" />
     <option name="mySmartErrorHandling" value="true" />
@@ -9,11 +9,11 @@
     <option name="myWorkingDirectory" value="" />
     <option name="myModule" />
     <option name="myJdk" />
-    <XsltFile url="file://$PROJECT_DIR$/xsl/infirmierHtml.xsl" />
+    <XsltFile url="file://$PROJECT_DIR$/xsl/patient.xsl" />
     <XmlFile url="file://$PROJECT_DIR$/xml/cabinetInfirmier.xml" />
     <parameters />
     <OutputType value="CONSOLE" save-to-file="true" />
-    <FileType name="XHTML" />
+    <FileType name="XML" />
     <JdkChoice value="FROM_MODULE" />
     <method v="2">
       <option name="Make" enabled="true" />

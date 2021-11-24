@@ -9,7 +9,7 @@
     <xsl:template match="/">
         <html>
             <head>
-                <title>Cabinet Medical</title>
+                <title>Cabinet Medical - Page Infimier</title>
                 <link rel="stylesheet" href="../stylesheets/infirmierPage.css"/>
             </head>
             <body>
@@ -24,7 +24,7 @@
         </html>
     </xsl:template>
 
-    <xsl:template match="cab:cabinet/cab:patients">
+    <xsl:template match="cab:patients">
         <table>
             <tr>
                 <td>Patient</td>
@@ -32,40 +32,47 @@
                 <td>Liste des soins</td>
                 <td>Facture</td>
             </tr>
-            <xsl:for-each select="cab:patient[cab:visite/@intervenant=$destinedId]">
-                <tr>
-                    <td><xsl:value-of select="cab:nom/text()"/>  <xsl:value-of select="cab:prenom/text()"/></td>
-                    <td><xsl:apply-templates select="cab:adresse"/> </td>
-                    <td><xsl:apply-templates select="cab:visite"/></td>
-                    <td>
-                        <xsl:element name="button">
-                            <xsl:attribute name="class">button button_style</xsl:attribute>
-                            <xsl:attribute name="onclick">
-                                openFacture('<xsl:value-of select="cab:prenom/text()"/>',
-                                '<xsl:value-of select="cab:nom/text()"/>',
-                                '<xsl:value-of select="cab:visite/*[@id]"/>')
-                            </xsl:attribute>
-                            Facture
-                        </xsl:element>
-                    </td>
-                </tr>
-            </xsl:for-each>
+            <xsl:apply-templates select="cab:patient[cab:visite/@intervenant=$destinedId]"/>
         </table>
     </xsl:template>
+    <xsl:template match="cab:patient">
+            <tr>
+                <td><xsl:value-of select="cab:nom/text()"/>  <xsl:value-of select="cab:prenom/text()"/></td>
+                <td><xsl:apply-templates select="cab:adresse"/> </td>
+                <td><xsl:apply-templates select="cab:visite/cab:acte"/></td>
+                <td>
+                    <xsl:element name="button">
+                        <xsl:attribute name="class">button button_style</xsl:attribute>
+                        <xsl:attribute name="onclick">
+                            openFacture('<xsl:value-of select="cab:prenom/text()"/>',
+                            '<xsl:value-of select="cab:nom/text()"/>',
+                            '<xsl:value-of select="cab:visite/*[@id]"/>')
+                        </xsl:attribute>
+                        Facture
+                    </xsl:element>
+                </td>
+            </tr>
+    </xsl:template>
     <xsl:template match="cab:adresse">
-        <p>
-            <xsl:value-of select="cab:numero"/> <xsl:value-of select="cab:rue"/>
-            <p><xsl:value-of select="cab:codePostal"/> <xsl:value-of select="cab:ville"/>   <xsl:value-of select="cab:etage"/>
+        <ul>
+            <xsl:value-of select="cab:numero"/>
+            <xsl:value-of select="cab:rue"/>
+            <p>
+                <xsl:value-of select="cab:codePostal"/>
+                <xsl:value-of select="cab:ville"/>
+                <xsl:if test="cab:etage">
+                    <p>
+                        <xsl:value-of select="cab:etage"/> etage
+                    </p>
+                </xsl:if>
             </p>
-        </p>
+        </ul>
     </xsl:template>
     <!--- ENG: Template for getting acte's names
           FR:Template permettant de trouver et afficher les noms des actes -->
-    <xsl:template match="cab:visite">
-        <xsl:for-each select="cab:acte">
-            <xsl:variable name="acteID" select="@id"/>
-            <p><xsl:value-of select="$actes/act:acte[@id=$acteID]/text()"/></p>
-        </xsl:for-each>
+    <xsl:template match="cab:acte">
+        <xsl:variable name="acteID" select="@id"/>
+        <p><xsl:value-of select="$actes/act:acte[@id=$acteID]/text()"/></p>
     </xsl:template>
     <!--- ENG: Template for avoiding untreated text
           FR:Template permettant d'eviter l'affichage du text non-traite par notre programme -->
