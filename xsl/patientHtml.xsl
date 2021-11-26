@@ -8,7 +8,7 @@
     <!--- ENG: Initial template with table-definition
           FR: Template initiale avec definition d'un tableau -->
     <xsl:template match="/">
-        <html>
+        <html lang="en">
             <head>
                 <title>Cabinet Medical - Page Patient</title>
                 <link rel="stylesheet" href="../stylesheets/pagePatient.css"/>
@@ -37,7 +37,7 @@
     <xsl:template match="pat:visite">
         <tr>
             <td><xsl:value-of select="@date"/></td>
-            <td><xsl:value-of select="pat:intervenant/pat:nom/text()"/>  <xsl:value-of select="pat:intervenant/pat:prenom/text()"/></td>
+            <td><xsl:value-of select="pat:intervenant/pat:nom/text()"/>&#160;<xsl:value-of select="pat:intervenant/pat:prenom/text()"/></td>
             <td>
                 <ul>
                     <xsl:apply-templates select="pat:acte"/>

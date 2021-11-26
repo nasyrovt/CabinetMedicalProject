@@ -1,7 +1,7 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Patient" type="XSLT" factoryName="XSLT">
-    <option name="myOutputFile" value="$PROJECT_DIR$/xml/patient.xml" />
-    <option name="myOpenOutputFile" value="true" />
+  <configuration default="false" name="PatietXML" type="XSLT" factoryName="XSLT">
+    <option name="myOutputFile" value="F:\Courses\XML\CabinetMedicalProject\xml\patient.xml" />
+    <option name="myOpenOutputFile" value="false" />
     <option name="myOpenInBrowser" value="false" />
     <option name="mySmartErrorHandling" value="true" />
     <option name="myRunnerPort" value="34873" />

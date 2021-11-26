@@ -11,7 +11,7 @@
     <!--- ENG: Initial template
           FR: Template initiale -->
     <xsl:template match="/">
-        <html>
+        <html lang="en">
             <head>
                 <title>Cabinet Medical - Page Infimier</title>
                 <link rel="stylesheet" href="../stylesheets/infirmierPage.css"/>
@@ -49,8 +49,8 @@
           FR:Template affiche les informations des patients et le button "Facture" dans une ligne du tableau -->
     <xsl:template match="cab:patient">
             <tr>
-                <td><xsl:value-of select="cab:nom/text()"/>  <xsl:value-of select="cab:prenom/text()"/></td>
-                <td><xsl:apply-templates select="cab:adresse"/> </td>
+                <td><xsl:value-of select="cab:prenom/text()"/>&#160;<xsl:value-of select="cab:nom/text()"/></td>
+                <td><xsl:apply-templates select="cab:adresse"/></td>
                 <td><xsl:apply-templates select="cab:visite/cab:acte"/></td>
                 <td>
                     <!--- ENG: Button creation
@@ -71,19 +71,13 @@
     <!--- ENG: Template prints adresse in a table
           FR: Template permettant d'afficher l'adresse dans le tableau -->
     <xsl:template match="cab:adresse">
-        <ul>
-            <xsl:value-of select="cab:numero"/>
-            <xsl:value-of select="cab:rue"/>
-            <p>
-                <xsl:value-of select="cab:codePostal"/>
-                <xsl:value-of select="cab:ville"/>
-                <xsl:if test="cab:etage">
-                    <p>
-                        <xsl:value-of select="cab:etage"/> etage
-                    </p>
-                </xsl:if>
-            </p>
-        </ul>
+        <xsl:value-of select="cab:numero"/>&#160;<xsl:value-of select="cab:rue"/>, &#160;
+            <xsl:value-of select="cab:codePostal"/>&#160;<xsl:value-of select="cab:ville"/>
+            <xsl:if test="cab:etage">
+                <p>
+                    <xsl:value-of select="cab:etage"/> etage
+                </p>
+            </xsl:if>
     </xsl:template>
 
     <!--- ENG: Template for getting acte's names
