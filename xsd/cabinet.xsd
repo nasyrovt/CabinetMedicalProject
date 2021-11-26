@@ -7,6 +7,7 @@
 
     <!-- root declaration -->
 <xs:element name="cabinet" type="cab:Cabinet">
+    <!-- Verification de l'existance du numero d'intervenant -->
     <xs:keyref name="intervenantIdExists" refer="cab:idUnique">
         <xs:selector xpath="cab:patients/cab:patient/cab:visite"/>
         <xs:field xpath="@intervenant"/>
@@ -20,6 +21,7 @@
         <xs:element name="nom" type="xs:string" />
         <xs:element type="cab:Adresse" name="adresse"/>
         <xs:element type="cab:Infirmiers" name="infirmiers">
+            <!-- Verification de l'unicite du numero d'intervenant -->
             <xs:key name="idUnique">
                 <xs:selector xpath="cab:infirmier"/>
                 <xs:field xpath="@id"/>
