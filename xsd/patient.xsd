@@ -3,9 +3,11 @@
            xmlns:xs="http://www.w3.org/2001/XMLSchema"
            xmlns:pat="http://www.ujf-grenoble.fr/l3miage/patient"
            elementFormDefault="qualified">
-    <!--- ENG: Simple scheme to validate and use a new Namespace xmlns:act
-          FR:Une schema simple definissant un espace de nom xmlns:act -->
+
+    <!--- ENG: Simple scheme to validate and use a new Namespace xmlns:pat
+          FR:Une schema simple definissant un espace de nom xmlns:pat -->
     <xs:element name="patient" type="pat:Patient"/>
+
     <xs:complexType name="Patient">
         <xs:sequence>
             <xs:element type="xs:string" name="nom"/>
@@ -17,17 +19,19 @@
             <xs:element type="pat:Visite" name ="visite" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
+
     <xs:complexType name="Adresse">
         <xs:sequence>
-            <xs:element name="numero" type="xs:byte" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="numero" type="xs:byte" minOccurs="0"/>
             <xs:element name="rue" type="xs:string"/>
             <xs:element name="codePostal" type="xs:int" />
             <xs:element name="ville" type="xs:string" />
             <xs:choice>
-                <xs:element name="etage" type="xs:byte"  minOccurs="0" maxOccurs="1"/>
+                <xs:element name="etage" type="xs:byte"  minOccurs="0"/>
             </xs:choice>
         </xs:sequence>
     </xs:complexType>
+
     <xs:complexType name="Visite">
         <xs:sequence>
             <xs:element name="intervenant" type="pat:Intervenant"/>
@@ -35,10 +39,12 @@
         </xs:sequence>
         <xs:attribute type="xs:date" name="date" use="required"/>
     </xs:complexType>
+
     <xs:complexType name="Intervenant">
         <xs:sequence>
             <xs:element type="xs:string" name="nom"/>
             <xs:element type="xs:string" name="prenom"/>
         </xs:sequence>
     </xs:complexType>
+
 </xs:schema>
