@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <cabinet xmlns="http://test/cabinet"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://test/cabinet ../xsd/XMLShema.xsd">
+         xsi:schemaLocation="http://test/cabinet ../xsd/cabinet.xsd">
     <nom>Soins à Grenoble</nom>
     <adresse>
         <numero>60</numero>
@@ -10,7 +10,7 @@
         <ville>Grenoble</ville>
     </adresse>
     <infirmiers>
-        <infirmier id ="001">
+        <infirmier id="001">
             <nom>Frechie</nom>
             <prenom>Sarah</prenom>
             <photo>PHOTO</photo>
@@ -84,14 +84,14 @@
             <prenom>Xavier</prenom>
             <sexe>M</sexe>
             <naissance>2011-08-02</naissance>
-            <numero>63</numero>
+            <numero>1000000000</numero>
             <adresse>
                 <numero>25</numero>
                 <rue>rue de Martyrs</rue>
                 <codePostal>38042</codePostal>
                 <ville>Grenoble</ville>
             </adresse>
-            <visite date="2015-12-08" intervenant = "">
+            <visite date="2015-12-08" intervenant = "001">
                 <acte id="111"/>
             </visite>
         </patient>

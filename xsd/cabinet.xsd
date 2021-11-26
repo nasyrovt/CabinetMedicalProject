@@ -3,45 +3,70 @@
             xmlns:xs="http://www.w3.org/2001/XMLSchema"
             xmlns:cab="http://test/cabinet"
             elementFormDefault="qualified">
-<!--  -->
-<xs:element name="cabinet" type="cab:Cabinet"/>
+
+
+    <!-- root declaration -->
+<xs:element name="cabinet" type="cab:Cabinet">
+    <xs:keyref name="intervenantIdExists" refer="cab:idUnique">
+        <xs:selector xpath="cab:patients/cab:patient/cab:visite"/>
+        <xs:field xpath="@intervenant"/>
+    </xs:keyref>
+</xs:element>
+
+
+    <!-- type cab:Cabinet -->
 <xs:complexType name="Cabinet">
     <xs:sequence>
         <xs:element name="nom" type="xs:string" />
         <xs:element type="cab:Adresse" name="adresse"/>
-        <xs:element type="cab:Infirmiers" name="infirmiers"/>
+        <xs:element type="cab:Infirmiers" name="infirmiers">
+            <xs:key name="idUnique">
+                <xs:selector xpath="cab:infirmier"/>
+                <xs:field xpath="@id"/>
+            </xs:key>
+        </xs:element>
         <xs:element type="cab:Patients" name="patients"/>
     </xs:sequence>
 </xs:complexType>
+
+    <!-- type cab:Adresse -->
 <xs:complexType name="Adresse">
     <xs:sequence>
-        <xs:element name="numero" type="xs:byte" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="numero" type="xs:byte" minOccurs="0"/>
         <xs:element name="rue" type="xs:string"/>
         <xs:element name="codePostal" type="xs:int" />
         <xs:element name="ville" type="xs:string" />
         <xs:choice>
-            <xs:element name="etage" type="xs:byte"  minOccurs="0" maxOccurs="1"/>
+            <xs:element name="etage" type="xs:byte"  minOccurs="0"/>
         </xs:choice>
     </xs:sequence>
 </xs:complexType>
+
+    <!-- type cab:Infirmiers -->
 <xs:complexType name="Infirmiers">
     <xs:sequence>
         <xs:element name="infirmier" type="cab:Infirmier" maxOccurs="unbounded" minOccurs="0"/>
     </xs:sequence>
 </xs:complexType>
+
+    <!-- type cab:Infirmier -->
 <xs:complexType name="Infirmier">
     <xs:sequence>
         <xs:element type="xs:string" name="nom"/>
         <xs:element type="xs:string" name="prenom"/>
         <xs:element type="xs:string" name="photo"/>
     </xs:sequence>
-    <xs:attribute type="xs:byte" name="id" use="required"/>
+    <xs:attribute type="cab:Restriction" name="id" use="required"/>
 </xs:complexType>
+
+    <!-- type cab:Patients -->
 <xs:complexType name="Patients">
     <xs:sequence>
         <xs:element name = "patient" type="cab:Patient" maxOccurs="unbounded" minOccurs="0"/>
     </xs:sequence>
 </xs:complexType>
+
+    <!-- type cab:Patient -->
 <xs:complexType name="Patient">
     <xs:sequence>
         <xs:element type="xs:string" name="nom"/>
@@ -53,13 +78,17 @@
         <xs:element type="cab:Visite" name = "visite" maxOccurs="unbounded"/>
     </xs:sequence>
 </xs:complexType>
+
+    <!-- type cab:Visite -->
 <xs:complexType name="Visite">
     <xs:sequence>
         <xs:element name="acte" type="cab:Acte" maxOccurs="unbounded" minOccurs="0"/>
     </xs:sequence>
     <xs:attribute type="xs:date" name="date" use="required"/>
-    <xs:attribute type="cab:Restriction" name="intervenant" use="optional"/>
+    <xs:attribute type="cab:Restriction" name="intervenant" use="required"/>
 </xs:complexType>
+
+    <!-- type cab:Acte -->
 <xs:complexType name="Acte">
     <xs:simpleContent>
         <xs:extension base="xs:string">
@@ -67,9 +96,13 @@
         </xs:extension>
     </xs:simpleContent>
 </xs:complexType>
+
+    <!-- type cab:Restriction instancie dans les attribut
+        acte/@id et visite/@intervenant -->
 <xs:simpleType name="Restriction">
     <xs:restriction base="xs:string">
         <xs:pattern value="[0-9]*"/>
     </xs:restriction>
 </xs:simpleType>
+
 </xs:schema>
