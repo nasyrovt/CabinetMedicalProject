@@ -3,25 +3,30 @@
            xmlns:xs="http://www.w3.org/2001/XMLSchema"
            xmlns:act="http://www.ujf-grenoble.fr/l3miage/actes"
            elementFormDefault="qualified">
-<!--- ENG: Simple scheme to validate and use a new Namespace xmlns:act
+
+    <!--- ENG: Simple scheme to validate and use a new Namespace xmlns:act
       FR:Une schema simple definissant un espace de nom xmlns:act -->
     <xs:element name="ngap" type="act:ngap"/>
+
     <xs:complexType name="ngap">
         <xs:sequence>
             <xs:element name="types" type="act:Types"/>
             <xs:element name="actes" type="act:Actes"/>
         </xs:sequence>
     </xs:complexType>
+
     <xs:complexType name="Types">
         <xs:sequence>
             <xs:element name="type" type="act:Type" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
+
     <xs:complexType name="Actes">
         <xs:sequence>
             <xs:element name="acte" type="act:Acte" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
+
     <xs:complexType name="Type">
         <xs:simpleContent>
             <xs:extension base="xs:string">
@@ -29,6 +34,7 @@
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>
+
     <xs:complexType name="Acte">
         <xs:simpleContent>
             <xs:extension base="xs:string">
@@ -39,4 +45,5 @@
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>
+
 </xs:schema>
