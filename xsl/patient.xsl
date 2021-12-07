@@ -70,7 +70,7 @@
         </acte>
     </xsl:template>
 
-    <!--- ENG: Avoids yntreated text
+    <!--- ENG: Avoids untreated text
           FR: Pour eviter le texte non-traite -->
     <xsl:template match="text()"/>
 

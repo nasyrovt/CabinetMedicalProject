@@ -5,7 +5,7 @@
            elementFormDefault="qualified">
 
     <!--- ENG: Simple scheme to validate and use a new Namespace xmlns:act
-      FR:Une schema simple definissant un espace de nom xmlns:act -->
+          FR:Une schema simple definissant un espace de nom xmlns:act -->
     <xs:element name="ngap" type="act:ngap"/>
 
     <xs:complexType name="ngap">
