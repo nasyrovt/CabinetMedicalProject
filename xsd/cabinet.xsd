@@ -75,11 +75,18 @@
         <xs:element type="xs:string" name="prenom"/>
         <xs:element type="xs:string" name="sexe"/>
         <xs:element type="xs:date" name="naissance"/>
-        <xs:element type="xs:long" name="numero"/>
+        <xs:element type="cab:NumeroSS" name="numero"/>
         <xs:element type="cab:Adresse" name = "adresse"/>
         <xs:element type="cab:Visite" name = "visite" maxOccurs="unbounded"/>
     </xs:sequence>
 </xs:complexType>
+
+    <!-- type cab:NumeroSS -->
+<xs:simpleType name="NumeroSS">
+    <xs:restriction base="xs:string">
+        <xs:pattern value="\d{13,15}"/>
+    </xs:restriction>
+</xs:simpleType>
 
     <!-- type cab:Visite -->
 <xs:complexType name="Visite">
